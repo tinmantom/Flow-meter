@@ -1,0 +1,52 @@
+
+
+#include <JeeLib.h>
+
+ISR(WDT_vect) { Sleepy::watchdogEvent(); } // Setup the watchdog
+
+//int waterWheel, batteryVoltage;
+
+typedef struct {
+      int waterWheel;
+      int batteryVoltage;                                                                                   
+} Payload;
+Payload emontx;
+
+void setup() {
+Serial.begin(9600);
+pinMode(4, OUTPUT);
+
+} 
+ 
+void loop() 
+{
+
+Sleepy::loseSomeTime(10000);
+
+//delay(10000);
+//digitalWrite(4, HIGH);
+delay(500);
+int batteryVoltageRead = analogRead(A3);
+delay(10);
+
+batteryVoltageRead = analogRead(A3);
+delay(10);
+//digitalWrite(4, LOW);
+Serial.print(batteryVoltageRead);
+Serial.print(batteryVoltageRead);
+Serial.print(batteryVoltageRead);
+Serial.println(batteryVoltageRead);
+//digitalWrite(13, HIGH);
+
+delay(100);
+
+//digitalWrite(13, LOW);
+//Sleepy::loseSomeTime(10000);
+/*
+Sleepy::loseSomeTime(65000);  
+Sleepy::loseSomeTime(65000); 
+Sleepy::loseSomeTime(65000); 
+Sleepy::loseSomeTime(65000); 
+*/
+delay(100);
+}
